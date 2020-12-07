@@ -17,6 +17,7 @@ public class Login {
     public void openBroser(){
         System.setProperty("webdriver.chrome.driver","./drivers/chromedriver.exe");
         driver = new ChromeDriver();
+        driver.get("http://biz-node-dev.miaogoche.cn/home");
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
     }
     @AfterClass
@@ -24,9 +25,11 @@ public class Login {
         driver.quit();
     }
     @Test
-    public void LoginTest(String accout,String passwd){
-        zulinLogin.sendAccount(accout);
-        zulinLogin.sendPasswd(passwd);
+    public void LoginTest(){
+
+        zulinLogin.sendAccount("chengguanxun");
+        zulinLogin.sendPasswd("123456");
         zulinLogin.clickConfirmBtn();
+        Assert.assertTrue(zulinLogin.isLogin());
     }
 }

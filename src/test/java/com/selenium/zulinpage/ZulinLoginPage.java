@@ -23,6 +23,8 @@ public class ZulinLoginPage {
     public void clickConfirmBtn(){
         driver.findElement(loginBtn).click();
     }
-
+    public boolean isLogin(){
+        return driver.getTitle()=="融租后台运营系统"?true:false;
+    }
 
 }
